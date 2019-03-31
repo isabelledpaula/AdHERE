@@ -1,0 +1,54 @@
+db.createCollection("ruas", {
+   validator: {
+      $jsonSchema: {
+         bsonType: "object",
+         required: [ "cruzamentos", "id", "nomeRuaPrincipal", "ruasTranversais", "ruasTransversais.nomeRuaTransversal", "ruasTransversais.pontosDeEncontro", "ruasTransversais.fluxoAtual", "ruasTransversais.fluxoAtual.velocidadeDeFluxoAtual", "ruasTransversais.fluxoAtual.velocidadeEmFluxoLivre" , "ruasTransversais.fluxoAtual.nivelDeTrafego", "tempoPrevisao"]
+         properties: {
+	    cruzamentos: {
+		bsonTypoe: "object"
+		description: "Cruzamentos"
+	    }
+            id: {
+               bsonType: "id",
+               description: "ID da rua"
+            },
+            nomeRuaPrincipal: {
+               bsonType: "string",
+               description: "Nome da Rua Principal"
+            },
+            ruasTransversais: {
+               bsonType: "object",
+               description: "Ruas Transversais"
+            },
+            "ruasTransversais.nomeRuaTransversal": {
+               bsonType : "string",
+               description: "Nome da Rua Transversal"
+            },
+            "ruasTransversais.pontosDeEncontro": {
+               bsonType: "string",
+               description: "Coordenadas dos Pontos de Encontro"
+            },
+            "ruasTransversais.fluxoAtual" : {
+               bsonType: "object",
+               description: "Objeto dos fluxos"
+            },
+            "ruasTransversais.fluxoAtual.velocidadeDeFluxoAtual" : {
+               bsonType: int,
+               description: "Nível de fluxo da rua, de 0 a 10"
+            }
+            "ruasTransversais.fluxoAtual.velocidadeDeFluxoLivre" : {
+               bsonType: int,
+               description: "Nível de fluxo livre da rua, de 0 a 10"
+            }
+            "ruasTransversais.fluxoAtual.nivelDeTrafego" : {
+               bsonType: int,
+               description: "Nível de tráfego na rua"
+            }
+            "tempoPrevisao" : {
+               bsonType: int,
+               description: "Previsão do tempo a ser gasto na rua"
+            }
+         }
+      }
+   }
+})
