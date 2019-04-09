@@ -1,27 +1,20 @@
 import React ,{ Component } from 'react';
 import axios from 'axios';
-import './MainService.css'
+import RuasList from './RuasList';
 
 class MainService extends Component {
-    constructor () {
-        super()
 
-
-        this.handleClick = this.handleClick.bind(this)
-    }
-
-    handleClick () {
-        axios.get('https://moobi-heremap.herokuapp.com/?key=PIMoobi2019').then(response => console.log(response))
-    }
+        constructor () {
+            super()
+            
+            
+            // this.handleClick = this.handleClick.bind(this)
+        }
 
     render () {
-        return (
-            <div className='button_container'>
-                <button className='button' onClick={this.handleClick}>
-                    Click Me Clink!
-                </button>
-            </div>
-        )
+       return(
+           <RuasList />
+       )
     }
     
 }
