@@ -11,7 +11,7 @@ export default class RuasList extends React.Component{
     componentDidMount() {
         axios.get(`https://moobi-heremap.herokuapp.com/?key=PIMoobi2019`)
         .then(res => {
-            // console.log(res);
+            console.log(res.data.dados.ruas.cruzamentos);
             this.setState({ 
                 ruas: Array.from(res.data.dados.ruas.cruzamentos),
                 // ruasTrans: Array.from(ruas.meuDeusApareceAsRuasTransversais) 
