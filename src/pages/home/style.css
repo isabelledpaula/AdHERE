@@ -1,0 +1,54 @@
+/* #6714A4 e #DC0366 */
+
+
+body{
+    background-color: #011F69
+}
+
+/* Navbar style */
+.divNav{
+    background: url('https://www.athensguide.com/driving/google-maps.png');
+}
+
+.navbar {   
+    background-image: linear-gradient(to left , #6714A4 , #DC0366);
+    opacity: 0.85;
+}
+
+a#a1 {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+a#a2 {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    padding: 0px 20px;
+}
+ /* Card Style */
+
+ .card {
+    background-color: #DC0366;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 40%;
+    padding: 10px 20px;
+}  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(238, 18, 190, 0.205);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+    padding: 12px 6px 10px 10px;
+  }
+
+  .container h4{
+      color: white;
+  }
