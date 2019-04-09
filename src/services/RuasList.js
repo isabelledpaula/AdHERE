@@ -11,8 +11,8 @@ export default class RuasList extends React.Component{
     componentDidMount() {
         axios.get(`https://moobi-heremap.herokuapp.com/?key=PIMoobi2019`)
         .then(res => {
-            console.log(res.data.dados.ruas.cruzamentos);
-            this.setState({ 
+             console.log(res.data.dados.ruas.cruzamentos);
+            this.setState({
                 ruas: Array.from(res.data.dados.ruas.cruzamentos),
                 // ruasTrans: Array.from(ruas.meuDeusApareceAsRuasTransversais) 
             });
@@ -22,7 +22,17 @@ export default class RuasList extends React.Component{
     render() {
         return(
             <ul>
-                { this.state.ruas.map(rua => <li>{rua.nomeRuaPrincipal} <br/> {rua.id} <br/> </li>) }
+                {
+                    this.state.ruas.map(rua => {
+                        return rua.ruasTransversais.map(ruaTransversal => {
+                            return (
+                                <li>{rua.nomeRuaPrincipal} com {ruaTransversal.nomeRuaTransversal} -- {ruaTransversal.fluxoAtual[0].nivelDeTrafego}
+                                    <br/> {rua.id} <br/>
+                                </li>
+                            )
+                        })
+                    })
+                }
                 
             </ul>
         )
