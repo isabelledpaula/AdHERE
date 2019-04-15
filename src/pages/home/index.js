@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import HEREMap, { Marker, RouteLine } from 'here-maps-react'
-import { HereMap, Marker, PathFinder } from 'rc-here-maps';
+import HEREMap, { Circle, RouteLine } from 'here-maps-react'
 import './style.css'
 import axios from 'axios'
 import logoImage from '../../assets/images/adhere_logo.svg'
@@ -86,19 +85,18 @@ class Home extends Component {
 
                         <div className="cardMap" style={{ padding: 4 }}>
                             <div className="App">
-                                {/* <HEREMap
+                                <HEREMap
                                     appId="my2dhMRU9k56Wv8QdloT"
                                     appCode="dGOv83JgdKNfBmMakPG5RA"
                                     center={this.state.center}
-                                    zoom={13}
+                                    zoom={13.5}
                                     hidpi
-                                    interactive
+                                    // interactive={true}
                                     // setLayer={{ layer: 'traffic', mapType: 'terrain' }}>
                                     setLayer={{ layer: 'map', mapType: 'terrain' }}>
 
                                     {this.state.requestHERE != null ?
                                         this.state.requestHERE.dados.ruas.cruzamentos.map(cruzamento => {
-
                                             return cruzamento.ruasTransversais.map(rua => {
                                                 // { console.log(rua.nomeRuaTransversal) }
                                                 // { console.log("---") }
@@ -127,29 +125,26 @@ class Home extends Component {
                                         })
                                         : null}
 
-                                </HEREMap> */}
+                                    {/* TODO: Geração de pontos arbitrária! */}
+                                    {this.state.requestHERE != null ?
+                                        this.state.requestHERE.dados.ruas.cruzamentos.map(cruzamento => {
+                                            return cruzamento.ruasTransversais.map(rua => {
+                                                var latlng = this.handleCoordinates(rua.pontosDeEncontro[0].split(","))
+                                                return (
+                                                    <Circle
+                                                        lat={latlng[0]}
+                                                        lng={latlng[1]}
+                                                        radius={100}
+                                                        fillColor={"#FFF"}
+                                                        strokeColor={"#6714A4"}
+                                                        lineWidth={4}
+                                                    />
+                                                )
+                                            })
+                                        })
+                                        : null}
 
-                                <HereMap
-                                    appId="my2dhMRU9k56Wv8QdloT"
-                                    appCode="dGOv83JgdKNfBmMakPG5RA"
-                                    useHTTPS={false}
-                                    center={this.state.center}
-                                    zoom={13.5}>
-
-                                    <Marker lat={-1.470165} lng={-48.468739}>
-                                        <i class="material-icons">
-                                            dock
-                                        </i>
-                                    </Marker>
-
-                                    <PathFinder
-                                        waypoints={[{ lat: -1.454180, lng: -48.496663 }, { lat: -1.470165, lng: -48.468739 }]}
-                                        style={{
-                                            lineWidth: 5,
-                                            strokeColor: 'rgba(256, 0, 0, 0.9)',
-                                        }}
-                                    />
-                                </HereMap>
+                                </HEREMap>
                             </div>
                         </div>
                     </section>
