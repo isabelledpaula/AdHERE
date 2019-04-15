@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "here-maps-react": "^0.1.2",
     "rc-here-maps": "^1.1.8",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
